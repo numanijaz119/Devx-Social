@@ -91,10 +91,9 @@ WSGI_APPLICATION = 'devx.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'devxdatabase',
-        'USER': 'minibhai009',
-        'PASSWORD': 'Numan123',
-        'HOST': 'database-1.cnwoeksygx7e.eu-west-2.rds.amazonaws.com',
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
         'PORT': '5432',
     }
 }
@@ -146,8 +145,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'minibhai009@gmail.com'
-EMAIL_HOST_PASSWORD = 'uamwfxtmvtwpeszs' 
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 
 # Static files (CSS, JavaScript, Images)
@@ -172,8 +171,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-AWS_ACCESS_KEY_ID = 'AKIA5ASJ4Y7SMBZLJSUI'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'devx-devxbucket'
 AWS_S3_REGION_NAME = 'eu-west-2'
 AWS_S3_SIGNATURE_VERSION = 's3v4'
